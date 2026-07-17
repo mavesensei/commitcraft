@@ -1,0 +1,10 @@
+diff --git a/README.md b/README.md
+index 1234567..abcdefg 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,5 @@
+ # My Project
+
++A great tool for developers.
++
+ See docs for more.
