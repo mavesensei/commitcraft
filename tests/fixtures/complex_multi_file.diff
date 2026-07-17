@@ -1,0 +1,29 @@
+diff --git a/src/auth/login.py b/src/auth/login.py
+index 1234567..abcdefg 100644
+--- a/src/auth/login.py
++++ b/src/auth/login.py
+@@ -10,6 +10,15 @@ from .models import User
+
++def authenticate_user(username: str, password: str) -> User | None:
++    user = User.get(username=username)
++    if user and user.check_password(password):
++        return user
++    return None
++
+ def login_view(request):
+     pass
+diff --git a/tests/test_auth.py b/tests/test_auth.py
+index 0000000..1111111 100644
+--- /dev/null
++++ b/tests/test_auth.py
+@@ -0,0 +1,10 @@
++import pytest
++from src.auth.login import authenticate_user
++
++def test_authenticate_user_valid():
++    result = authenticate_user("alice", "correct")
++    assert result is not None
++
++def test_authenticate_user_invalid():
++    result = authenticate_user("alice", "wrong")
++    assert result is None
